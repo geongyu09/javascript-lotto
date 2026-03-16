@@ -212,7 +212,7 @@ const LottoResult = (rank, returnRate) => {
       <div class="lotto-result__dimmed"></div>
       <div class="lotto-result__content">
         <button class="lotto-result__close-button">
-          <img src="/assets/Close.png" alt="닫기" width="14px" />
+          <img src="${"/javascript-lotto/"}assets/Close.png" alt="닫기" width="14px" />
         </button>
         <div class="lotto-result__title-wrapper">
           <h2 class="lotto-result__title">🏆 당첨 통계 🏆</h2>
@@ -388,7 +388,7 @@ class LottoStore {
   }
 }
 const App = () => {
-  const disableForm = (form) => {
+  const disablePurchaseForm = (form) => {
     form.querySelector(".lotto-purchase-form__input").disabled = true;
     form.querySelector(".lotto-purchase-form__button").disabled = true;
   };
@@ -398,7 +398,7 @@ const App = () => {
       const formData = new FormData(event.target);
       const purchaseAmount = parseInt(formData.get("purchase-amount"), 10);
       const lottos = LottoStore.purchaseLottos(purchaseAmount);
-      disableForm(event.target);
+      disablePurchaseForm(event.target);
       render(".lotto-list", LottoList(lottos));
       render(
         ".lotto-winning-bonus-number",
@@ -414,28 +414,29 @@ const App = () => {
     </header>
     <main class="lotto-main">
       <div class="lotto-content">
-        <div class="lotto-content-header">
-          <h2 class="lotto-content-header__title">🎱 내 번호 당첨 확인 🎱</h2>
-        </div>
-        <div class="lotto-purchase">
-          <p>구입할 금액을 입력해주세요.</p>
+        <h2 class="lotto-content-header__title">🎱 내 번호 당첨 확인 🎱</h2>
+        <section class="lotto-purchase">
           <form class="lotto-purchase-form">
-            <input
-              type="number"
-              name="purchase-amount"
-              placeholder="금액"
-              class="lotto-purchase-form__input"
-              min="1000"
-              step="1000"
-            />
-            <button type="submit" class="lotto-purchase-form__button">
-              구입
-            </button>
+            <label for="purchase-amount">구입할 금액을 입력해주세요.</label>
+            <div class="lotto-purchase-form__input-group">
+              <input
+                type="number"
+                name="purchase-amount"
+                id="purchase-amount"
+                placeholder="금액"
+                class="lotto-purchase-form__input"
+                min="1000"
+                step="1000"
+              />
+              <button type="submit" class="lotto-purchase-form__button">
+                구입
+              </button>
+            </div>
           </form>
-        </div>
-        <div class="lotto-list"></div>
-        <div class="lotto-winning-bonus-number"></div>
-        <div class="lotto-result"></div>
+        </section>
+        <section class="lotto-list"></section>
+        <section class="lotto-winning-bonus-number"></section>
+        <section class="lotto-result"></section>
       </div>
     </main>
     <footer class="lotto-footer">
