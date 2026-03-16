@@ -31,7 +31,7 @@ const LottoList = (lottos) => {
   return `
     <p class="lotto-list__info">총 ${lottos.length}개를 구매하였습니다.</p>
     <ul class="lotto-list__items">
-      ${lottos.map((lotto) => `<li class="lotto-list__item"><img src="/assets/Lotto.png" alt="로또" width="34px" /> ${lotto.parseNumbers().join(", ")}</li>`).join("")}
+      ${lottos.map((lotto) => `<li class="lotto-list__item"><img src="${"/javascript-lotto/"}assets/Lotto.png" alt="로또" width="34px" /> ${lotto.parseNumbers().join(", ")}</li>`).join("")}
     </ul>
   `;
 };
@@ -212,7 +212,7 @@ const LottoResult = (rank, returnRate) => {
       <div class="lotto-result__dimmed"></div>
       <div class="lotto-result__content">
         <button class="lotto-result__close-button">
-          <img src="${"/javascript-lotto/"}/javascript-lotto/assets/Close.png" alt="닫기" width="14px" />
+          <img src="${"/javascript-lotto/"}assets/Close.png" alt="닫기" width="14px" />
         </button>
         <div class="lotto-result__title-wrapper">
           <h2 class="lotto-result__title">🏆 당첨 통계 🏆</h2>
